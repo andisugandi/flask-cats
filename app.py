@@ -22,7 +22,7 @@ images = [
 @app.route('/')
 def index():
     url = random.choice(images)
-    return render_template('index.html', title="Flask Cats", h4="Cat Gif of the day" url=url)
+    return render_template('index.html', title="Flask Cats", h4="Cat Gif of the day", url=url)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0")

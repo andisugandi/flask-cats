@@ -11,7 +11,7 @@ pipeline {
         stage("Test"){
             agent { docker { image 'python:3.12.1' } }
             steps{
-                sh "pip install -r requirements.txt && python ${WORKSPACE}/test.py"
+                sh "python -m venv .venv && . .venv/bin/activate && pip install -r requirements.txt && python ${WORKSPACE}/test.py"
             }
         }
         stage('Deploy') {

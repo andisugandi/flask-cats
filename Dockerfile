@@ -1,5 +1,6 @@
-FROM alpine:3.9
-RUN apk add --update python3
+FROM alpine:3.12
+RUN apk update \
+    && apk --no-cache add python3 cmd:pip3
 RUN pip3 install --upgrade pip
 COPY requirements.txt /usr/src/app/
 RUN pip install --no-cache-dir -r /usr/src/app/requirements.txt

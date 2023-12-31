@@ -17,7 +17,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    withDockerRegistry(credentialsId: '8ba027e5-6193-404c-9645-f19e799d492d', toolName: 'docker') {
+                    docker.withRegistry('https://quay.io', 'quay-credentials') {
                         sh "docker image push quay.io/andidotsugandi/flaskcats"
                         sh "docker container run -d --name kucing -p 5000:5000 quay.io/andidotsugandi/flaskcats"
                     }

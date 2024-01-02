@@ -20,6 +20,8 @@ pipeline {
                     docker.withRegistry('https://quay.io', 'quay-credentials') {
                         sh "docker image push quay.io/andidotsugandi/flaskcats"
                         sh "docker container run -d --name kucing -p 5000:5000 quay.io/andidotsugandi/flaskcats"
+                        sleep(time: 1, unit: 'MINUTES')
+                        sh "docker container stop kucing && docker container rm kucing"
                     }
                 }
             }
